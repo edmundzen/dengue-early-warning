@@ -21,7 +21,7 @@
 
 ## Day 1 runbook
 1. Open `member1_data_pipeline.ipynb` in Colab (no GPU needed for your part)
-2. Run ALL cells first on the built-in synthetic fallback — proves the pipeline before real data (10 min)
+2. Run all notebook cells to verify the complete data pipeline before enabling BigQuery output.
 3. Download ~30 recent cluster CSVs from outbreak.sgcharts.com/data → upload to `data/history/` in Colab
 4. Re-run §2 onward — verify row counts and the date range printed
 5. Get the team GCP project id from whoever owns it → set `RUN_BQ=True`, `PROJECT=...` → run §6
