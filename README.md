@@ -13,7 +13,6 @@ Predicts high-risk 250m blocks *before* outbreaks escalate — and routes **ever
 Dengue is fought reactively — teams respond *after* cases spike, and manually scanning millions of rows delays inspection and wastes scarce crews. A missed cluster costs lives; a false alarm erodes trust.
 
 ## What Sentinel does
-## What Sentinel does
 
 Turns **5.1M rows of real NEA dengue cluster data (2015–2020)** and **live NEA rainfall readings** into a **14-day risk forecast per 250m cell** (BigQuery ML ARIMA_PLUS), scores and ranks every block by 
 case density, lagged rainfall and recurrence, then routes thehighest-risk clusters through an **Officer-of-the-Day approval gate** — each decision logged with identity and timestamp — before approved alerts reach field teams via**Telegram**.
