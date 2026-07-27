@@ -1,14 +1,17 @@
 # Member 1 — Data & Pipeline (Runbook)
 
-## Your deliverables (what the team gets from you)
-1. **`dengue_ew.telemetry_daily`** (BigQuery) — cell_id, lat, lon, date, case_count, rain_mm
-2. **`dengue_ew.features`** (BigQuery) + `handoff/features_latest.csv` — adds case_density_14d, rain_lag_7to14d, recurrence
-3. The **data contract** message posted in team chat (bottom of the notebook)
+## Deliverables
+| Table | What | Consumer |
+|---|---|---|
+| `dengue_ew.nea_clusters_raw` | One dated snapshot per day of NEA active clusters | risk layer |
+| `dengue_ew.weather_daily_raw` | Daily rainfall per station, 78 stations | risk layer |
+| `dengue_ew.source_registry` | Publisher, licence, coverage, cadence per source | attribution |
+| `dengue_ew.inspection_priority_live` | Ranked current inspection list | M3 Looker, M4 Gemini |
+| `dengue_ew.v_data_freshness` | Latest date + staleness per layer | everyone, before any demo |
+| `dengue_ew.telemetry_daily` / `features` | 2015–2020 historical series | M2 ARIMA training only |
 
-Member 2 builds risk scores on your `features` table. Nothing else in the project starts until table #1 exists — you are the critical path for Day 1.
-
-## Real data sources (verified July 2026)
-| Source | What | How |
+## Data sources
+| Source | What | Real? |
 |---|---|---|
 | NEA Dengue Clusters (data.gov.sg, id `d_dbfabf16158d1b0e1c420627c0819168`) | TODAY's active clusters, polygons + case counts | poll-download API — coded in notebook §1 |
 | outbreak.sgcharts.com/data | HISTORICAL cluster snapshots (CSV, lat/lon/cases/date, since 2013) | Manual download into `data/history/` — notebook §2 loads them |
@@ -18,7 +21,7 @@ Member 2 builds risk scores on your `features` table. Nothing else in the projec
 
 ## Day 1 runbook
 1. Open `member1_data_pipeline.ipynb` in Colab (no GPU needed for your part)
-2. Verify history files (or manual baseline data) are loaded in the data folder.
+2. Run ALL cells first on the built-in synthetic fallback — proves the pipeline before real data (10 min)
 3. Download ~30 recent cluster CSVs from outbreak.sgcharts.com/data → upload to `data/history/` in Colab
 4. Re-run §2 onward — verify row counts and the date range printed
 5. Get the team GCP project id from whoever owns it → set `RUN_BQ=True`, `PROJECT=...` → run §6
