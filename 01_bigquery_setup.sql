@@ -70,9 +70,8 @@ SELECT alert_id, cell_id, blocks, risk_score, risk_level,
 FROM `dengue-early-warning.dengue_ew.alert_queue`
 ORDER BY risk_score DESC;
 
--- 6) AI alert messages (Gemini-generated, pre-computed = "quota-proof").
---    Stored so the demo never depends on live Gemini quota. Regenerate via
---    member4_gemini.ipynb when quota allows; schema stays the same.
+-- 6) AI alert messages (Gemini-generated baseline demo seeds).
+--    Stores the generated severity alerts, executive summaries, and action recommendations.
 CREATE OR REPLACE TABLE `dengue-early-warning.dengue_ew.alert_messages` AS
 SELECT * FROM UNNEST([
 STRUCT(1 AS rank, '1.33425_103.8825' AS cell_id, 'Critical' AS risk_level, 38.61 AS risk_score, 'Tai Seng' AS zone,

@@ -34,11 +34,11 @@ A live **Looker Studio** dashboard spans the flow: risk map · this-week inspect
 - **Telegram delivery** of approved alerts to field teams
 
 ## Tech stack (all free-tier)
-Google Cloud — **BigQuery**, **BigQuery ML (ARIMA_PLUS)**, Cloud Storage, **Gemini** · **NVIDIA T4 + RAPIDS cuDF** (Colab) · **Looker Studio** · **Supabase** (writable officer decisions) · **Telegram Bot API**.
+Google Cloud — **BigQuery**, **BigQuery ML (ARIMA_PLUS)**, Cloud Storage, **Gemini** · **NVIDIA T4 + RAPIDS cuDF** (Colab) · **Looker Studio** · **Telegram Bot API**.
 
 ## Reproduce
-1. **BigQuery:** run [`sql/01_bigquery_setup.sql`](sql/01_bigquery_setup.sql) — views, alert queue, AI alerts (idempotent, sandbox-safe).
-2. **Supabase:** run [`sql/02_supabase_setup.sql`](sql/02_supabase_setup.sql) — officer decision log.
+1. **BigQuery:** run [`01_bigquery_setup.sql`](01_bigquery_setup.sql) — views, alert queue, AI alerts (idempotent, sandbox-safe).
+2. **Supabase:** run [`02_supabase_setup.sql`](02_supabase_setup.sql) — officer decision log (optional local integration).
 3. **Notebooks:** `member1_data_pipeline.ipynb` (data) · `member2_risk_model.ipynb` (risk + forecast) · `member4_gemini.ipynb` (Gemini, chatbot, Telegram).
 4. **Dashboard:** Looker Studio, 3 pages (see [SENTINEL_ARCHITECTURE.md](SENTINEL_ARCHITECTURE.md)).
 

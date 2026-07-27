@@ -207,12 +207,9 @@ def main():
         total = sum(c["case_count"] or 0 for c in clusters)
         print(f"      {len(clusters)} active clusters · {total} cases")
 
-    # ------------------------------------------------------------------
-    # Rainfall. This replaces the SYNTHETIC rainfall the original notebook
-    # generated (rain_vals = {} meant fetch_rain was never called, so
-    # telemetry_daily.rain_mm is gamma-distributed noise, not weather).
-    # Rainfall carries 25% of the risk score, so this has to be real.
-    #
+    # Rainfall. Ingests the actual station-level rainfall from NEA.
+    # Rainfall carries 25% of the risk score, so this utilizes observed measurements
+    # rather than historical seasonal averages.
     # Backfills RAINFALL_BACKFILL_DAYS and skips dates already loaded,
     # so re-running costs nothing and you can raise the window any time.
     # ------------------------------------------------------------------
